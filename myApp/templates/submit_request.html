@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Submit Service Request</h2>
+<form action="{% url 'submit_request' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="request_type">Request Type:</label>
+    <select name="request_type" id="request_type">
+        <option value="gas_leak">Gas Leak</option>
+        <option value="gas_meter_installation">Gas Meter Installation</option>
+        <!-- Add more options as needed -->
+    </select><br><br>
+    <label for="details">Details:</label><br>
+    <textarea name="details" id="details" cols="30" rows="5"></textarea><br><br>
+    <label for="attachment">Attachment:</label>
+    <input type="file" name="attachment" id="attachment"><br><br>
+    <button type="submit">Submit Request</button>
+</form>
+{% endblock %}

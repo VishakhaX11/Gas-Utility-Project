@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Track Service Request</h2>
+<form action="{% url 'track_request' %}" method="post">
+    {% csrf_token %}
+    <label for="request_id">Request ID:</label>
+    <input type="text" name="request_id" id="request_id"><br><br>
+    <button type="submit">Track Request</button>
+</form>
+
+{% if request_data %}
+    <h3>Request Details:</h3>
+    <p>Request ID: {{ request_data.id }}</p>
+    <p>Status: {{ request_data.status }}</p>
+    <p>Date Submitted: {{ request_data.date_submitted }}</p>
+    <p>Date Resolved: {{ request_data.date_resolved }}</p>
+    <!-- Add more details as needed -->
+{% endif %}
+{% endblock %}
